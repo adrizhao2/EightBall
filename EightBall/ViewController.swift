@@ -33,13 +33,22 @@ class ViewController: UIViewController {
                    "Outlook not so good",
                    "Very doubtful"]
     
+    var lastIndex = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        messageLabel.text = answers.randomElement()!
+        
+        // repeat loop version - probably on exam
+        var randomIndex: Int
+        repeat {
+            randomIndex = Int.random(in: 0..<answers.count)
+        } while randomIndex == lastIndex
+        
+        messageLabel.text = answers[randomIndex]
+        lastIndex = randomIndex
     }
-    
 }
 
